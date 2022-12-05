@@ -31,3 +31,27 @@ function distributeGifts(packOfGifts, reindeers) {
 }
 ------------------------------------------------------------------------------------------------------
 4)
+function fitsInOneBox(boxes) {
+//My initial thought was to use a variation of the bubble sort algorithm
+//I ended up using .sort() method because results in a lower cyclomatic complexity and in a more maintainable code
+  
+  boxes.sort(
+    (box, box2) => 
+    box.l > box2.l && 
+    box.w > box2.w &&
+    box.h > box2.h ? 1: box.l < box2.l && 
+                        box.w < box2.w &&
+                        box.h < box2.h ? -1 : 0);
+
+  //After ordering the array of boxes, I check if every box fits inside the next one
+  //(if the index of the box equals the length of the array-1 that means we are in the last box, therefore, every box fits inside another one)
+  return boxes.every((box, index)=>{
+    return index === boxes.length-1 ||
+          box.l < boxes[index + 1].l && 
+          box.w < boxes[index + 1].w &&
+          box.h < boxes[index + 1].h;
+  })
+}
+--------------------------------------------------------------------------------------------------------
+5)
+
