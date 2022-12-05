@@ -48,4 +48,24 @@ function fitsInOneBox(boxes) {
 }
 --------------------------------------------------------------------------------------------------------
 5)
+function getMaxGifts(giftsCities, maxGifts, maxCities) {
+
+  //This one is a tricky one, it's based on the Knapsack problem(0–1)
+
+  const getSum = (values, gifts, cities, i)=>{
+    //If I reached the maximum of gifts or the max of cities available I stop counting
+    if(gifts < 0 || cities === 0) return 0
+    //If the value of the array that I want to check is lower than the max amount of gifts I return the gratter number between using that value and not using it
+    else if(values[i] <= gifts){
+      return Math.max(values[i] + getSum(values, gifts - values[i], cities - 1, i-1), getSum(values, gifts, cities, i - 1))
+    }
+    //If the value is bigger than the max amount of gifts and I didn't reached the last value I drop that value and continue 
+    //If I reached the end of the array return 0.
+    return i > 0 ? getSum(values, gifts, cities, i - 1) : 0
+  }
+
+  return getSum(giftsCities, maxGifts, maxCities, giftsCities.length - 1)
+}
+-------------------------------------------------------------------------------------------------------------
+6)
 
