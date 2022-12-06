@@ -68,4 +68,19 @@ function getMaxGifts(giftsCities, maxGifts, maxCities) {
 }
 -------------------------------------------------------------------------------------------------------------
 6)
+function createCube(size) {
+  let head = ''
+  let tail = ''
+  for(let i = 0; i<size; i++){
+    head += ' '.repeat(size - i - 1) + '/\\'.repeat(i+1) + '_\\'.repeat(size) + '\n'
+    tail += ' '.repeat(i) + '\\/'.repeat(size - i) + '_/'.repeat(size) + '\n'
+  }  
+  
+  //I delete the last \n character using .slice(0, -1).
+  //-1 indicates the last position in the string
+  return head.concat(tail).slice(0,-1)
+}
+--------------------------------------------------------------------------------------------------------------
+7)
+
 
