@@ -83,7 +83,8 @@ function createCube(size) {
 function createCube(size) {
  
  //An array is returned as a result of a .join(\n) between the top and the bottom of the cube. 
-  //The '...' indicates that the returned array (before the join()) uses the Array build with Array.from() This method creates an Array from a iterable object (in our case, a string which we declare in that exact moment)
+  //The '...' indicates that the returned array (before the join()) uses the Array build with Array.from() 
+   //This method creates an Array from a iterable object (in our case, a string which we declare in that exact moment)
   //The .from() first parameter can be an object that contains the property 'length' which defines the length of the new array
   return [
     ...Array.from({ length: size}, (v, index) => ' '.repeat(size - index - 1) + '/\\'.repeat(index+1) + '_\\'.repeat(size)),
@@ -92,5 +93,10 @@ function createCube(size) {
 }
  ---------------------------------------------------------------------------------------------------------------
 7)
-
-
+function getGiftsToRefill(a1, a2, a3) {
+  //First I created an array out of the unique values of the arrays given as params of the function. 
+ //Then I filtered them knowing that a unique value is the first and the last to appear on a given array
+  return [...new Set(a1), ...new Set(a2), ...new Set(a3)].filter((value, index, self)=> self.lastIndexOf(value) === index && self.indexOf(value) === index)
+}
+-----------------------------------------------------------------------------------------------------------------
+ 8)
