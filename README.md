@@ -191,7 +191,7 @@ Pay attention to the spaces in the cube.
  - Make sure you use the correct symbols.
  - Each line must be separated by a new line character \n except for the last one.
 
-###Seventh challenge
+### Seventh challenge
 
 In the Santa Claus stores they are doing inventory. There are three stores (which is represented as an Array each). In each store there are gifts.
 
