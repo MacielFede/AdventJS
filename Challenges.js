@@ -80,7 +80,19 @@ function createCube(size) {
   //-1 indicates the last position in the string
   return head.concat(tail).slice(0,-1)
 }
---------------------------------------------------------------------------------------------------------------
+
+//Another solution:
+function createCube(size) {
+ 
+ //An array is returned as a result of a .join(\n) between the top and the bottom of the cube. 
+  //The '...' indicates that the returned array (before the join()) uses the Array build with Array.from() This method creates an Array from a iterable object (in our case, a string which we declare in that exact moment)
+  //The .from() first parameter can be an object that contains the property 'length' which defines the length of the new array
+  return [
+    ...Array.from({ length: size}, (v, index) => ' '.repeat(size - index - 1) + '/\\'.repeat(index+1) + '_\\'.repeat(size)),
+    ...Array.from({ length: size}, (v, index) => ' '.repeat(index) + '\\/'.repeat(size - index) + '_/'.repeat(size)),
+  ].join('\n');
+}
+ ---------------------------------------------------------------------------------------------------------------
 7)
 
 
