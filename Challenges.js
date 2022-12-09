@@ -100,3 +100,18 @@ function getGiftsToRefill(a1, a2, a3) {
 }
 -----------------------------------------------------------------------------------------------------------------
  8)
+ function checkPart(part) {
+
+//[...part] transforms the string to an array
+//The .some() method checks if at least one element fits the condition. 
+  //This method takes 3 parameters, one of them is the actual element, que named it '_' because we don't use it 
+  return [...part].some((_, i, arr) => {
+      const subArr = arr.slice(0, i).concat(arr.slice(i + 1))
+      
+      //At last we only need to reverse the new array and join it to convertit to a string again
+      return subArr.join('') === subArr.reverse().join('')
+  })
+ }
+------------------------------------------------------------------------------------------------------------------------
+ 9)
+
