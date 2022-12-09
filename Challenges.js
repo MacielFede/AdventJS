@@ -114,4 +114,16 @@ function getGiftsToRefill(a1, a2, a3) {
  }
 ------------------------------------------------------------------------------------------------------------------------
  9)
+ function countTime(leds){
+  //If every led is turned on I stop counting
+  if (leds.every((x) => x == 1)) return 0;
+  //Else, I count 7 seconds and switch all the leds that can do so
+  return 7 + countTime(leds.map((led, i) => {
+    if (led === 0 && leds.at(i-1) === 1) return 1;
+    return led
+  }));
+}
+------------------------------------------------------------------------------------------------------------------------
+10)
+
 
