@@ -125,5 +125,13 @@ function getGiftsToRefill(a1, a2, a3) {
 }
 ------------------------------------------------------------------------------------------------------------------------
 10)
-
+ function checkJump(heights) {
+  //We calculate the division between the length and 2
+  const halfLength = Math.floor(heights.length/2)
+  //Then we ask if the first number is lower than the one in the middle of the array and if this number is bigger than the last number
+  return (heights[0] < heights[halfLength] &&
+   heights[heights.length-1] < heights[halfLength])
+}
+-------------------------------------------------------------------------------------------------------------------------
+ 11)
 
