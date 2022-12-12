@@ -134,4 +134,31 @@ function getGiftsToRefill(a1, a2, a3) {
 }
 -------------------------------------------------------------------------------------------------------------------------
  11)
+function getCompleted(part, total) {
+  //gcd it's a function to calculate the Gratest Common Divisor between two numbers, this will be usefull to simplify the fractions.
+//Math.abs returns the absolute value of a number
+  const gcd = (a, b)=> {
+    a = Math.abs(a);
+    b = Math.abs(b);
+    while(b) {
+      const t = b;
+      b = a % b;
+      a = t;
+    }
+    return a;
+  }
+  //This function transforms the strings into seconds to calculate the fractions. String.split() method divides a string by a given pattern and returns it in an array.
+  const toSeconds = (string) => {
+    const [hh,mm,ss] = string.split(":")
+    return (ss*1)+(mm*60)+(hh*3600)
+  }
+  const partSeconds = toSeconds(part)
+  const totalSeconds = toSeconds(total)
+  const partFraction = partSeconds/gcd(partSeconds, totalSeconds)
+  const totalFraction = totalSeconds/gcd(partSeconds, totalSeconds)
 
+  return `${partFraction}/${totalFraction}`
+}
+---------------------------------------------------------------------------------------------------------------------------
+ 12)
+ 
