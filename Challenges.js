@@ -150,7 +150,7 @@ function getCompleted(part, total) {
   //This function transforms the strings into seconds to calculate the fractions. String.split() method divides a string by a given pattern and returns it in an array.
   const toSeconds = (string) => {
     const [hh,mm,ss] = string.split(":")
-    return (ss*1)+(mm*60)+(hh*3600)
+    return (hh*3600)+(mm*60)+(ss*1)
   }
   const partSeconds = toSeconds(part)
   const totalSeconds = toSeconds(total)
