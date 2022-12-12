@@ -126,11 +126,20 @@ function getGiftsToRefill(a1, a2, a3) {
 ------------------------------------------------------------------------------------------------------------------------
 10)
  function checkJump(heights) {
-  //We calculate the division between the length and 2
-  const halfLength = Math.floor(heights.length/2)
-  //Then we ask if the first number is lower than the one in the middle of the array and if this number is bigger than the last number
-  return (heights[0] < heights[halfLength] &&
-   heights[heights.length-1] < heights[halfLength])
+  //Find the bigger value on the array
+  const max = Math.max(...heights)
+  
+  //Split the array in two, from the first element to the bigger value index, and from the next element to the last one. 
+  //Then check that every element is bigger than the previus one, except the first one and if every element is smaller than the previous one. 
+  //This checks are performed respectively to each part.
+  
+  const up = heights.slice(0, heights.indexOf(max))
+  const down = heights.slice(heights.indexOf(max) + 1)
+  
+  const checkUp = up.slice(1).every((element, index) =>  element >= up[index])
+  const checkDown = down.slice(1).every((element, index) => element <= down[index])
+  
+  return down.length > 0 && up.length > 0 && checkUp && checkDown
 }
 -------------------------------------------------------------------------------------------------------------------------
  11)
@@ -161,4 +170,12 @@ function getCompleted(part, total) {
 }
 ---------------------------------------------------------------------------------------------------------------------------
  12)
- 
+ function selectSleigh(distance, sleighs) {
+  //First I reverse the array and then find the first index which element fits the condition. Since the array is already sorted I don't have to do nothing else,
+  //just check that I found some index
+  const bestSleighIndex = sleighs.reverse().findIndex((sleigh)=> {
+    return sleigh.consumption * distance <= 20 
+  })
+
+  return bestSleighIndex != -1 ? sleighs[bestSleighIndex].name : null 
+}
