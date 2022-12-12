@@ -79,7 +79,8 @@ function createCube(size) {
   return head.concat(tail).slice(0,-1)
 }
 
-//Another solution:
+//Another solution (taken from the midudev community):
+
 function createCube(size) {
  
  //An array is returned as a result of a .join(\n) between the top and the bottom of the cube. 
@@ -125,6 +126,20 @@ function getGiftsToRefill(a1, a2, a3) {
 }
 ------------------------------------------------------------------------------------------------------------------------
 10)
+function checkJump(heights) {
+  //Find the bigger value on the array
+  const max = Math.max(...heights)
+  //First we check that the array doesn't has the max value in the first or the last position. And then we check that every element fits a condition depending on it's index.
+   return ![heights.at(0), heights.at(-1)].includes(max) &&
+    heights.every((value, index)=>{
+    return ( index === 0 || 
+    ((index <= heights.indexOf(max) && value >= heights[index-1]) || 
+    (index > heights.indexOf(max) && value <= heights[index-1])))
+  })
+}
+
+//Another solution(taken from the midudev community):
+
  function checkJump(heights) {
   //Find the bigger value on the array
   const max = Math.max(...heights)
