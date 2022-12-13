@@ -194,3 +194,19 @@ function getCompleted(part, total) {
 
   return bestSleighIndex != -1 ? sleighs[bestSleighIndex].name : null 
 }
+--------------------------------------------------------------------------------------------------------------------------
+13)
+function getFilesToBackup(lastBackup, changes) {
+  //First filter the ids considering the timestamp value and sort the resulting array 
+  
+    const sortedIds = changes.reduce((result, value)=>{
+      if(value[1] > lastBackup) result.push(value[0])
+      return result
+    }, []).sort((a,b)=>  a - b)
+  
+  //... new Set() returns an array with no duplicates
+  return [...new Set([...sortedIds])]
+}
+-------------------------------------------------------------------------------------------------------------------------
+ 14)
+ 
