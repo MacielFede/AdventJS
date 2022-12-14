@@ -129,7 +129,8 @@ function getGiftsToRefill(a1, a2, a3) {
 function checkJump(heights) {
   //Find the bigger value on the array
   const max = Math.max(...heights)
-  //First we check that the array doesn't has the max value in the first or the last position. And then we check that every element fits a condition depending on it's index.
+  //First we check that the array doesn't has the max value in the first or the last position. 
+   //And then we check that every element fits a condition depending on it's index.
    return ![heights.at(0), heights.at(-1)].includes(max) &&
     heights.every((value, index)=>{
     return ( index === 0 || 
