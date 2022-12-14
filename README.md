@@ -452,7 +452,7 @@ getOptimalPath([[1], [1, 5], [7, 5, 8], [9, 4, 1, 3]]) // 8
 ```
 To keep in mind:
 
-Keep in mind that you can only go down diagonally and down from any position.
+ - Keep in mind that you can only go down diagonally and down from any position.
  - The first position of the pyramid can be different from 0.
  - Pyramids can have up to 10 levels.
  - The numbers in the pyramids can be negative.
