@@ -209,4 +209,24 @@ function getFilesToBackup(lastBackup, changes) {
 }
 -------------------------------------------------------------------------------------------------------------------------
  14)
- 
+ function getOptimalPath(path) {
+  //This is a recursive problem we can think of the path as a binary three
+  const calculateTime = (pyramid, pos)=>{
+    //If the path has no root, we return 0
+    if(pyramid.length === 0) return 0
+    //We calculate the sum between the left leaf and the actual root
+    const samePos = pyramid[0][pos] + calculateTime(pyramid.slice(1), pos)
+    
+    //We calculate the sum between the right leaf and the actual root
+    const changePos = pyramid[0][pos] + calculateTime(pyramid.slice(1), pos+1)
+
+    //Return the minimun of both calculations
+    return Math.min(...[samePos, changePos])
+  }
+  const time = calculateTime(path, 0)
+
+  return time
+}
+----------------------------------------------------------------------------------------------------------------------
+15)
+
