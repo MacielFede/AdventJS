@@ -230,4 +230,26 @@ function getFilesToBackup(lastBackup, changes) {
 }
 ----------------------------------------------------------------------------------------------------------------------
 15)
+// I couldn't solve this challenge on my own so I used this solutions given by a member of the discord community
+function decorateTree(base) {
+ //set the default decors
+  const decors = ['B', 'P', 'R'];
+ //Split the string into an array. This array is put inside another, so we can have the base already put in the first position
+  let tree = [base.split(' ')];
+ 
+  [...tree[0]].slice(1).forEach((_,i) => {
+    tree.push(
+      [...tree[i]].slice(1)
+        .map((item, index) => 
+          item === tree[i][index] ? 
+            item : 
+            decors.find(d => d != item && d != tree[i][index])
+        )
+    )
+  })
+
+  return tree.reverse().map(t => t.join(' '))
+}
+------------------------------------------------------------------------------------------------------------------------
+16)
 
