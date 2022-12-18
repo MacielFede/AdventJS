@@ -252,4 +252,29 @@ function decorateTree(base) {
 }
 ------------------------------------------------------------------------------------------------------------------------
 16)
+// I couldn't solve this challenge on my own so I used this solutions given by a member of the discord community
+// This one was especially hard for me because I didn't knew RegEx (not only in javascript)
+function fixLetter(letter) {
+  return letter
+    // Questions must only end with a question mark
+    .replace(/\?+/g, "?")
+    .replace(/\!+/g, "!")
+    // Remove spaces before comma or point
+    .replace(/(\s+([,.?!]))/g,(m, $1, $2) => $2)
+    // Leave a space after each comma and point
+    .replace(/(^|[,.!?]+)([a-zA-Z])/g, (m, $1, $2) => `${$1} ${$2}`)
+    // The first letter of each sentence must be capitalized
+    .replace(/(^|[.!?]\s+)([a-z])/g, (m, $1, $2) => $1 + $2.toUpperCase())
+    // Remove multiple spaces and leave only one
+    .replace(/\s+/g, " ")
+     // Put the word "Santa Claus" in uppercase if it appears in the letter
+    .replace(/(santa claus)/gi, 'Santa Claus')
+    // Remove spaces at the beginning and end of the phrase
+    .trim()
+    .replace(/(^[a-z])/g, (m, $1) => $1.toUpperCase())
+    // Put a point at the end of the sentence if it does not have punctuation
+    .replace(/([A-z])$/, (m, p) => `${p}.`)
+}
+------------------------------------------------------------------------------------------------------------------------
+17)
 
