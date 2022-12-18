@@ -523,6 +523,89 @@ Note:
  - You do not have to worry about punctuation marks other than comma, point or question mark.
  - Make sure you respect break lines and original whitespaces.
 
+### Seventeenth challenge
+
+We're preparing the Christmas gift bags but each bag has a weight limit.
+
+We are given an array with the names of the gifts and a number that is the maximum weight that each bag can carry. The weight of each gift is the length of its name.
+
+Write a function that groups the gifts in bags and returns an array with the names of the gifts of each bag. To group the gifts, the names are separated by spaces (the space does not count as weight).
+
+But keep in mind that if the weight of the gifts of a bag exceeds the maximum weight, the last gift of the bag must be separated and placed in the next bag.
+```
+carryGifts(['game', 'bike', 'book', 'toy'], 10)
+// ['game bike', 'book toy']
+// in each bag you can carry 10kg
+// the first bag carries 'game' and 'bike' which weigh 4kg and 4kg
+// the second bag carries 'book' and ' toy' which weigh 4kg and 3kg
+
+carryGifts(['game', 'bike', 'book', 'toy'], 7)
+// ['game', 'bike', 'book toy']
+// in each bag you can carry 7kg
+// the first bag can only carry 'game' which weighs 4kg
+// the second bag can only carry 'bike' which weighs 4kg
+
+carryGifts(['game', 'bike', 'book', 'toy'], 4)
+// ['game', 'bike', 'book', 'toy']
+// in each bag you can carry 4kg
+// each bag can only carry one gift
+
+carryGifts(['toy', 'gamme', 'toy', 'bike'], 6)
+// ['toy', 'gamme', 'toy', 'bike']
+// in each bag you can carry 6kg
+// each bag can only carry one gift
+// note that you can not carry 'toy toy' in a bag
+// because it is not next to each other
+```
+Note:
+
+ - The gifts are always grouped in the order of appearance in the array.
+ - You can not change the order of the gifts in the array when grouping them.
+ - All the gifts can be grouped in a single bag.
+ - If you can not group any gift in a bag, an empty array is returned.
+
+### Eighteenth challenge
+
+We are printing barcodes for the packages. At Santa's factory we use a numbering system where each number is printed with a different ink. It's an old but reliable system. However, sometimes we run out of ink for a number.
+
+Write a function that receives the number we don't have ink for (a number between 0 and 9) and as a second parameter, the number of barcodes to print (we start from 1 to the number we receive).
+
+It should return an array with the numbers that include the number we don't have ink for. Let's see an example:
+```
+dryNumber(1, 15) // [1, 10, 11, 12, 13, 14, 15]
+
+// we don't have ink for the number 1
+// we have to print 15 barcodes from 1 to 15
+// the barcodes that will be wrong because of the lack of ink are:
+// 1, 10, 11, 12, 13, 14, 15
+
+dryNumber(2, 20) // [2, 12, 20]
+
+// we don't have ink for the number 2
+// we have to print 20 barcodes from 1 to 20
+// the barcodes that will be wrong because of the lack of ink are:
+
+// 2, 12, 20
+```
+Keep in mind that:
+
+ - The number we don't have ink for can only be between 0 and 9.
+ - The number we don't have ink for can be in any position of the barcode.
+ - The number of barcodes to print can be very large.
+
+### Nineteenth challenge
+
+### Twentieth challenge
+
+### Twenty-first challenge
+
+### Twenty-second challenge
+
+### Twenty-third challenge
+
+### Twenty-fourth challenge
+
+
 # Feedback
 
 If you have any feedback, or comments please reach out to me at federicomaciel.dev@gmail.com or via GitHub.
