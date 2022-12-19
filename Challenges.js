@@ -277,4 +277,26 @@ function fixLetter(letter) {
 }
 ------------------------------------------------------------------------------------------------------------------------
 17)
+function carryGifts(gifts, maxWeight) {
 
+  let bags = []
+
+  gifts.forEach(gift =>{
+    //If bags contains an element and the bags last element length + the gift length <= maxWeight we add that gift to the last element
+    if(bags.at(-1) && 
+    bags.at(-1).replaceAll(' ', '').length + gift.length <= maxWeight){
+      bags[bags.length -1] += ` ${gift}` 
+      //This return stops the execution
+      return 
+    }
+    
+    if(!bags.at(-1) && gift.length <= maxWeight || gift.length <= maxWeight){
+      bags.push(gift)
+    } 
+  })
+
+  return bags
+}
+-----------------------------------------------------------------------------------------------------------------------
+ 18)
+ 
