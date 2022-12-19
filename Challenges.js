@@ -299,4 +299,15 @@ function carryGifts(gifts, maxWeight) {
 }
 -----------------------------------------------------------------------------------------------------------------------
  18)
- 
+ function dryNumber(dry, numbers) {  
+  const barrcodes = []
+
+  for(let i = 1; i <= numbers; i++){
+    if(Math.abs(i).toString().includes(dry)){
+      barrcodes.push(i)
+    }
+  }
+
+  return barrcodes
+}
+------------------------------------------------------------------------------------------------------------------------
