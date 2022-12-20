@@ -325,6 +325,45 @@ function sortToys(toys, positions) {
 }
 ----------------------------------------------------------------------------------------------------------------------
 20)
+function howManyReindeers(reindeerTypes, gifts) {
+  //Order the reindeers array by descending order
+  reindeerTypes.sort((a,b)=> b.weightCapacity - a.weightCapacity )
+
+  return gifts.reduce(
+    //The use of destructuring assignment it's really helpfull
+    (accumulator, {country, weight})=>{
+      //Find the first rindeer that can carry gifts to the country
+      let index = reindeerTypes.findIndex(r =>
+       r.weightCapacity < weight)
+      //Calculate the maximum weight the team of rindeers can carry to the country
+      let maxCapacity = reindeerTypes.reduce(
+        (acc, curr) => curr.weightCapacity < weight? 
+        acc += curr.weightCapacity : acc += 0, 
+        0
+      )
+      
+      const reindeersAv = []
+
+      while(weight > 0){
+        //Calculate the quantity of that certain type of reindeer by dividing the weight and the maximum weight the team can carry
+        const number = Math.floor(weight / maxCapacity)
+        //substract the reindeer weight from the maximum capacity
+        maxCapacity -= reindeerTypes[index].weightCapacity
+        //Substract the total weight the reindeer carries from the weight of the country
+        weight -= number * reindeerTypes[index].weightCapacity
+        reindeersAv.push({type: reindeerTypes[index].type, num: number})
+        //Go to the next reindeer
+        index++
+      }
+
+      accumulator.push({
+        country: country,
+        reindeers: reindeersAv
+      })
+      return accumulator
+    }, []
+  )
+}
 
 ----------------------------------------------------------------------------------------------------------------------
 21)
