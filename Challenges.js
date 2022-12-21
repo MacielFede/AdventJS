@@ -367,7 +367,38 @@ function howManyReindeers(reindeerTypes, gifts) {
 
 ----------------------------------------------------------------------------------------------------------------------
 21)
+function printTable(gifts) {
+  //calculate the maximum between 4 (gift word length) and all the names on the array
+  const maxLengthGift = Math.max.apply(
+    Math, [4, ...gifts.map(g => g.name.length)])
+  //calculate the maximum between 8 (quantity word length) and all the names on the array
+  const maxquantityGift = Math.max.apply(
+    Math, [8, ...gifts.map(g => g.quantity.toString().length)])
+  
+  const topBottom = maxLengthGift + maxquantityGift + 7
+  const table = []
 
+  //Push the top of the table
+  table.push('+'.repeat(topBottom) + '\n')
+
+  //Push the header of the table. 
+  //When you use the || operator like this, if the first expression is truthy the first expression is returned, else the second expression is returned
+  table.push('| Gift' + ' '.repeat(maxLengthGift - 'gift'.length || 0)
+  + ' | Quantity' + ' '.repeat(maxquantityGift - 'quantity'.length || 0)
+   + ' |\n')
+  table.push('| ' + '-'.repeat
+  (maxLengthGift) + ' | ' + '-'.repeat(maxquantityGift) + ' |\n')
+
+  //Push each gift name and quantity 
+  gifts.forEach( gift =>{
+    table.push('| ' + gift.name + 
+    ' '.repeat(maxLengthGift - gift.name.length) + ' | ' + gift.quantity + 
+    ' '.repeat(maxquantityGift - gift.quantity.toString().length)+ ' |\n')
+  })
+  //Push the bottom of the table
+  table.push('*'.repeat(topBottom))
+  return table.join('')
+}
 ----------------------------------------------------------------------------------------------------------------------
 22)
 
