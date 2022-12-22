@@ -401,7 +401,11 @@ function printTable(gifts) {
 }
 ----------------------------------------------------------------------------------------------------------------------
 22)
-
+function checkStepNumbers(systemNames, stepNumbers) {
+  //If the array returned from systemNames.slice() is empty or doesn't contains the actual name, the index returns -1. That's why we add index to that count, because we want to campare it to itself if it's the last occurence of that name
+  return systemNames.every((name, index) => stepNumbers[index] <= stepNumbers[
+    index + systemNames.slice(index + 1).indexOf(name) + 1 ])
+}
 ----------------------------------------------------------------------------------------------------------------------
 23)
 
