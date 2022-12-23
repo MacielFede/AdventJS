@@ -418,7 +418,50 @@ function checkStepNumbers(systemNames, stepNumbers) {
 }
 ----------------------------------------------------------------------------------------------------------------------
 23)
+function executeCommands(commands) {
+  let registers = [0, 0, 0, 0, 0, 0, 0, 0]
+  let values = []
+  let comm = []
+  let i = 0
 
+  while( i < commands.length){
+   //Split the command by a space, we get an array with the command itself and the values
+    comm = commands[i].split(/ /g)
+   //Split the values (if there's only one, nothing happens)
+    values = comm[1].split(/,/g)
+    switch (comm[0]){
+      case 'MOV':
+      //Check if we are trying to copy a value from another register or setting a new value for the register
+        if(values[0].includes('V')){
+          registers[parseInt(values[1][2])] = 
+          registers[parseInt(values[0][2])]
+        }else registers[parseInt(values[1][2])] = parseInt(values[0])
+      break
+      case 'ADD':
+        registers[parseInt(values[0][2])] += 
+        registers[parseInt(values[1][2])]
+      break
+      case 'DEC':
+        registers[parseInt(values[0][2])]--
+      break
+      case 'INC':
+        registers[parseInt(values[0][2])]++
+      break
+      case 'JMP':
+        if(registers[0] > 0) i = values[0] - 1
+      break
+    }
+    i++
+  }
+ //This map solves the problem of having to use an 8 bit cpu (the values can only be between 0-255)
+  return registers.map(
+    (reg)=>{
+      if(reg > 255) return reg - 256
+      else if(reg < 0) return reg + 256
+      else return reg
+    }
+  )
+}
 ----------------------------------------------------------------------------------------------------------------------
 24)
 
