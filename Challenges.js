@@ -464,4 +464,21 @@ function executeCommands(commands) {
 }
 ----------------------------------------------------------------------------------------------------------------------
 24)
-
+function canExit(maze) {
+  const canExitFrom = (x, y)=> {
+    if (x < 0 || x >= maze.length || 
+      y < 0 || y >= maze[x].length || maze[x][y] === "W") return false
+   
+    //If the 'E' is reached there's a possible way out
+    if (maze[x][y] === "E")  return true
+   
+     maze[x][y] = "W";
+    //Ask if you can exit in any direction (left, right, up and down)
+    return (canExitFrom(x + 1, y) ||
+      canExitFrom(x - 1, y) ||
+      canExitFrom(x, y + 1) ||
+      canExitFrom(x, y - 1))
+  }
+  //The .some() method asks if any of the rows has an exit(since the S only starts in the first row, the method is only executed one time)
+  return maze.some((row, index) => canExitFrom(index, row.indexOf("S")));
+}
